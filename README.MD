@@ -13,6 +13,9 @@ git submodule add http://github.com/semanchester/estrella
 ## Usage
 Example:
 ```python
+import sys
+import os
+sys.path.append(os.path.join(__file__, "estrella")) # assuming you use it as a submodule
 from estrella.util import read_config
 from estrella.main import Estrella
 cfg = read_config(path="path/to/hocon_file") # merges with default config
