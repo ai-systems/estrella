@@ -1,0 +1,2 @@
+class MalformattedConfigException(Exception):
+    pass

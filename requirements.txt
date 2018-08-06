@@ -1,0 +1,8 @@
+requests
+unidecode
+nltk
+numpy
+pyhocon
+
+nose
+rednose

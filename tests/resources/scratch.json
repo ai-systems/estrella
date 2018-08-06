@@ -1,0 +1,173 @@
+{
+  "coreferenced": false,
+  "sentences": [
+    {
+      "originalSentence": "FedEx Corporation , originally known as FDX Corporation , is an American global courier delivery services company headquartered in Memphis , Tennessee .",
+      "sentenceIdx": 0,
+      "extractions": [
+        {
+          "id": "f5e5543ee1d241d191fdf82e1f6d1b3d",
+          "type": "VERB_BASED",
+          "confidence": {
+            "present": false
+          },
+          "sentenceIdx": 0,
+          "contextLayer": 0,
+          "relation": "is an American global courier delivery services company headquartered",
+          "arg1": "FedEx Corporation",
+          "arg2": "",
+          "linkedContexts": [
+            {
+              "targetID": "4a9a50686c034d5694bd80dfd7ae51f1",
+              "classification": "NOUN_BASED"
+            }
+          ],
+          "simpleContexts": [
+            {
+              "text": "FedEx Corporation is originally known as FDX Corporation .",
+              "classification": "NOUN_BASED",
+              "timeInformation": {
+                "present": false
+              },
+              "tagHolder": {
+                "namedEntityTags": "ORGANIZATION ORGANIZATION O O O O ORGANIZATION ORGANIZATION O",
+                "flattenedParse": "S: NNP NNP VBZ RB VBN IN NNP NNP ."
+              }
+            },
+            {
+              "text": "in Memphis , Tennessee .",
+              "classification": "SPATIAL",
+              "timeInformation": {
+                "present": false
+              },
+              "tagHolder": {
+                "namedEntityTags": "O LOCATION O LOCATION O",
+                "flattenedParse": "FRAG: IN NNP , NNP ."
+              }
+            }
+          ],
+          "arg1Tags": {
+            "namedEntityTags": "O O",
+            "flattenedParse": "NP: NNP NNP"
+          },
+          "arg2Tags": {
+            "namedEntityTags": "",
+            "flattenedParse": ""
+          },
+          "relationTags": {
+            "namedEntityTags": "O O O O O O O O O",
+            "flattenedParse": "VP: VBZ DT JJ JJ NN NN NNS NN VBN"
+          }
+        },
+        {
+          "id": "4a9a50686c034d5694bd80dfd7ae51f1",
+          "type": "NOUN_BASED",
+          "confidence": {
+            "present": false
+          },
+          "sentenceIdx": 0,
+          "contextLayer": 0,
+          "relation": "is originally known",
+          "arg1": "FedEx Corporation",
+          "arg2": "as FDX Corporation",
+          "linkedContexts": [],
+          "simpleContexts": [],
+          "arg1Tags": {
+            "namedEntityTags": "O O",
+            "flattenedParse": "NP: NNP NNP"
+          },
+          "arg2Tags": {
+            "namedEntityTags": "O ORGANIZATION ORGANIZATION",
+            "flattenedParse": "PP: IN NNP NNP"
+          },
+          "relationTags": {
+            "namedEntityTags": "O O O",
+            "flattenedParse": "VP: VBZ RB VBN"
+          }
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "id": "f5e5543ee1d241d191fdf82e1f6d1b3d",
+      "type": "VERB_BASED",
+      "confidence": {
+        "present": false
+      },
+      "sentenceIdx": 0,
+      "contextLayer": 0,
+      "relation": "is an American global courier delivery services company headquartered",
+      "arg1": "FedEx Corporation",
+      "arg2": "",
+      "linkedContexts": [
+        {
+          "targetID": "4a9a50686c034d5694bd80dfd7ae51f1",
+          "classification": "NOUN_BASED"
+        }
+      ],
+      "simpleContexts": [
+        {
+          "text": "FedEx Corporation is originally known as FDX Corporation .",
+          "classification": "NOUN_BASED",
+          "timeInformation": {
+            "present": false
+          },
+          "tagHolder": {
+            "namedEntityTags": "ORGANIZATION ORGANIZATION O O O O ORGANIZATION ORGANIZATION O",
+            "flattenedParse": "S: NNP NNP VBZ RB VBN IN NNP NNP ."
+          }
+        },
+        {
+          "text": "in Memphis , Tennessee .",
+          "classification": "SPATIAL",
+          "timeInformation": {
+            "present": false
+          },
+          "tagHolder": {
+            "namedEntityTags": "O LOCATION O LOCATION O",
+            "flattenedParse": "FRAG: IN NNP , NNP ."
+          }
+        }
+      ],
+      "arg1Tags": {
+        "namedEntityTags": "O O",
+        "flattenedParse": "NP: NNP NNP"
+      },
+      "arg2Tags": {
+        "namedEntityTags": "",
+        "flattenedParse": ""
+      },
+      "relationTags": {
+        "namedEntityTags": "O O O O O O O O O",
+        "flattenedParse": "VP: VBZ DT JJ JJ NN NN NNS NN VBN"
+      }
+    },
+    {
+      "id": "4a9a50686c034d5694bd80dfd7ae51f1",
+      "type": "NOUN_BASED",
+      "confidence": {
+        "present": false
+      },
+      "sentenceIdx": 0,
+      "contextLayer": 0,
+      "relation": "is originally known",
+      "arg1": "FedEx Corporation",
+      "arg2": "as FDX Corporation",
+      "linkedContexts": [],
+      "simpleContexts": [],
+      "arg1Tags": {
+        "namedEntityTags": "O O",
+        "flattenedParse": "NP: NNP NNP"
+      },
+      "arg2Tags": {
+        "namedEntityTags": "O ORGANIZATION ORGANIZATION",
+        "flattenedParse": "PP: IN NNP NNP"
+      },
+      "relationTags": {
+        "namedEntityTags": "O O O",
+        "flattenedParse": "VP: VBZ RB VBN"
+      }
+    }
+  ]
+}
