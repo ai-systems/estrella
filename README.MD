@@ -2,7 +2,7 @@
 This library is being designed with the goal to learn explicit operations over unstructured text.
 ## Disclaimer
 The repository is under heavy development. Here be dragons.
-## installation
+## Installation
 The project does not provide a stand-alone service as of now, just clone the repository and install via pip to `import` it into your own code.
 ```bash
 git clone http://github.com/semanchester/estrella
