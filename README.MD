@@ -13,7 +13,7 @@ pip install .
 ```
 
 ## Minimal Example:
-Make sure the [Graphene](http://google.de) service is set up and running.
+Make sure the [Graphene](https://github.com/Lambda-3/Graphene) service is set up and running.
 Create a file "sample.txt" with this content
 ```text
 The chicken crossed the road , because it could .
