@@ -24,7 +24,7 @@ class Document(Sequence, Representable, Readable, Viewable):
             Estrella: "_docs"
         }
 
-    def pprint(self):
+    def pprint(self, **kwargs):
         return "\n".join(s.pprint() for s in self.sentences)
 
     def __getitem__(self, i: int):
@@ -61,7 +61,7 @@ class Document(Sequence, Representable, Readable, Viewable):
 
 
 class Sentence(Sequence, Representable, Readable):
-    def pprint(self):
+    def pprint(self, **kwargs):
         return " ".join(w.pprint() for w in self.words)
 
     def __getitem__(self, i: int):
@@ -77,7 +77,7 @@ class Sentence(Sequence, Representable, Readable):
 
 class Word(Representable, Readable):
 
-    def pprint(self):
+    def pprint(self, **kwargs):
         return self.text
 
     def __init__(self, index: int, text, normalized_text: str):
@@ -93,7 +93,7 @@ class Word(Representable, Readable):
 
 class Concept(Representable, Readable):
     @abstractmethod
-    def pprint(self) -> str:
+    def pprint(self, **kwargs) -> str:
         pass
 
 

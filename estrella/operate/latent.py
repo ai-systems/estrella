@@ -1,7 +1,7 @@
 import json
 from abc import ABCMeta, abstractmethod
 from operator import attrgetter
-from typing import Sequence, Collection, List, Dict
+from typing import Sequence, Collection, Dict
 
 import requests
 
@@ -26,7 +26,7 @@ class EmbeddingComparator(metaclass=ABCMeta):
 
 class Indra(EmbeddingComparator, EmbeddingProvider):
     """
-    Stub class to make http request to the Indra distributed semantics service.
+    Stub class to make http request calls to the Indra distributed semantics service.
     """
 
     def __init__(self, corpus="googlenews", model="W2V", language="EN", server="localhost", scoring_function='COSINE',

@@ -1,6 +1,7 @@
 import json
 import logging
-from logging import config
+import logging.config
+from logging.handlers import RotatingFileHandler
 import os
 from collections import Iterable, Mapping
 from typing import List, Union
@@ -11,17 +12,22 @@ from estrella.exceptions.config import MalformattedConfigException
 from estrella.interfaces import Readable
 
 
-def setup_logging(path='config/logging.conf'):
+def setup_logging(path=''):
     """
     Setup logging configuration.
     """
 
     cfg = read_config(path, default="logging.conf")
-    config.dictConfig(cfg.as_plain_ordered_dict())
+
+    logging.config.dictConfig(cfg.as_plain_ordered_dict())
 
     logging.getLogger(__name__).info("Config loaded.")
 
-    # logging.warning("Couldn't load config! Path {} doesn't exist!".format(path))
+
+class MakeFileHandler(RotatingFileHandler):
+    def __init__(self, filename, mode='a', maxBytes=0, backupCount=0, encoding=None, delay=False):
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        RotatingFileHandler.__init__(self, filename, mode, maxBytes, backupCount, encoding, delay)
 
 
 class FQNFilter(logging.Filter):
@@ -42,15 +48,20 @@ class FQNFilter(logging.Filter):
         return record
 
 
-def read_config(path='config/default.conf', default="default.conf"):
-    default = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "config", default)
-
+def read_config(path="", default="default.conf"):
+    if path is None:
+        path = ""
+    from pkg_resources import resource_string
+    default = resource_string(__name__, '/resources/{}'.format(default))
+    # default = os.path.join(os.path.dirname(os.path.abspath(__file__)), "resources", default)
+    default = default.decode("utf-8")
     try:
         with open(path, "r") as f:
             cfg_str = f.read()
     except FileNotFoundError:
-        logging.getLogger(__name__).warning("{} doesn't exist! Working with fallback only.".format(path))
-        return ConfigFactory.parse_file(default)
+        if path:
+            logging.getLogger(__name__).warning("{} doesn't exist! Loading default.".format(path))
+        return ConfigFactory.parse_string(default)
     cfg_str = 'include "{}"\n{}'.format(default, cfg_str)
     return ConfigFactory.parse_string(cfg_str)
 

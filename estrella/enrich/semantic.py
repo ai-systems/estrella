@@ -5,7 +5,7 @@ from typing import Dict
 import requests
 
 from estrella.enrich import Enricher
-from estrella.model.oie import Fact, MaybeSpan, FactLabel, ContextLink, SingleFact
+from estrella.model.oie import MaybeSpan, FactLabel, ContextLink, SingleFact
 
 
 def _get(serialized, *paths, as_cls=lambda x: x):
@@ -15,14 +15,16 @@ def _get(serialized, *paths, as_cls=lambda x: x):
 
 
 class GrapheneEnricher(Enricher):
-    def __init__(self, do_coreference=False, server_address="http://localhost:8080/", group_lists=False):
+    def __init__(self, do_coreference=False, server_address="localhost", server_port=8080, group_lists=False):
         super().__init__()
         self.do_coreference = do_coreference
+        self.server_address = server_address
+        self.server_port = server_port
         self.server_address = server_address
         self.group_lists = group_lists
 
     def get_graphene_output(self, document) -> Dict:
-        url = "{}relationExtraction/text".format(self.server_address)
+        url = "http://{}:{}/relationExtraction/text".format(self.server_address, self.server_port)
         data = {
             'text': document.plaintext,
             'doCoreference': self.do_coreference,

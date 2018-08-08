@@ -13,16 +13,16 @@ from estrella.interfaces import Loggable
 
 
 class Estrella(Loggable):
-    def __init__(self, cfg: ConfigTree):
+    def __init__(self, cfg_path: str = None):
         super().__init__()
-        self.cfg = cfg
+        self.cfg = util.read_config(cfg_path)['main']
         self._docs = []
-        self.dist_service: EmbeddingComparator = util.safe_construct(cfg['embedding_comparator'],
+        self.dist_service: EmbeddingComparator = util.safe_construct(self.cfg['embedding_comparator'],
                                                                      restrict_to=EmbeddingComparator,
                                                                      relative_import="estrella.operate.latent")
         self.languages = language.from_config(self.cfg['languages'])
         self.pipeline_configs: Dict[str, ConfigTree] = {
-            k: v for k, v in cfg.get_config("pipelines").items()
+            k: v for k, v in self.cfg.get_config("pipelines").items()
         }  # from name to config
         self.pipelines: Dict[str, Pipeline] = {
             k: from_config(v) for k, v in self.pipeline_configs.items()

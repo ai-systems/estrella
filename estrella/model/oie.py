@@ -171,7 +171,7 @@ class ContextLink(Link, Representable, Readable):
         self.is_simple = isinstance(target, MaybeSpan)
         self.is_coordinate = source.context_level >= 0 and source.context_level == getattr(target, "context_level", -2)
 
-    def pprint(self, as_text=True):
+    def pprint(self, as_text=True, **kwargs):
         if self.is_simple:
             target_str = "".join(("(", pprint(self.target), ")"))
         else:
