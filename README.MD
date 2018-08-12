@@ -12,7 +12,7 @@ pip install .
 
 ```
 
-## Minimal Example:
+## Minimal Example
 Make sure the [Graphene](https://github.com/Lambda-3/Graphene) service is set up and running.
 Create a file "sample.txt" with this content
 ```text
@@ -29,7 +29,7 @@ facts = main.docs.hop(link_name="facts")
 print(simple_print(facts))
 from estrella.model.oie import ContextLabel
 # Why did the chicken cross the road?
-answer = facts.filter(subject="The chicken", predicate="cross", object="the road").hop(link_name="links",constraint=lambda link: link.label == ContextLabel.Cause)
+answer = facts.filter(subject="The chicken", predicate="cross", object="the road").hop(link_name="links", constraint=lambda link: link.label == ContextLabel.Cause)
 print(answer.serialize(serialize_with=simple_print))
 vectors = [f.numerify() for f in facts]
 
