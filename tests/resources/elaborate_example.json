@@ -1,0 +1,383 @@
+{
+  "coreferenced": false,
+  "sentences": [
+    {
+      "originalSentence": "During his summers , he , a lawyer , returned to Chicago , where he worked as an associate at the law firms of Sidley Austin in 1989 and Hopkins & Sutter in 1990 .",
+      "sentenceIdx": 0,
+      "extractions": [
+        {
+          "id": "58e6bbb4f27549db94374736a64cc75b",
+          "type": "VERB_BASED",
+          "confidence": {
+            "present": false
+          },
+          "sentenceIdx": 0,
+          "contextLayer": 0,
+          "relation": "returned",
+          "arg1": "he",
+          "arg2": "",
+          "linkedContexts": [
+            {
+              "targetID": "5ef2d1e1030d4e3ba44c341de6a24b4e",
+              "classification": "ELABORATION"
+            },
+            {
+              "targetID": "dddfeeab9e85440586636f221c8ca18c",
+              "classification": "ELABORATION"
+            },
+            {
+              "targetID": "767f527d2f394ee586547673bf879b3e",
+              "classification": "NOUN_BASED"
+            }
+          ],
+          "simpleContexts": [
+            {
+              "text": "during his summers .",
+              "classification": "UNKNOWN",
+              "timeInformation": {
+                "present": false
+              },
+              "tagHolder": {
+                "namedEntityTags": "O O O O",
+                "flattenedParse": "FRAG: IN PRP$ NNS ."
+              }
+            },
+            {
+              "text": "a lawyer was he .",
+              "classification": "NOUN_BASED",
+              "timeInformation": {
+                "present": false
+              },
+              "tagHolder": {
+                "namedEntityTags": "O O O O O",
+                "flattenedParse": "S: DT NN VBD PRP ."
+              }
+            },
+            {
+              "text": "to Chicago .",
+              "classification": "SPATIAL",
+              "timeInformation": {
+                "present": false
+              },
+              "tagHolder": {
+                "namedEntityTags": "O LOCATION O",
+                "flattenedParse": "FRAG: TO NNP ."
+              }
+            }
+          ],
+          "arg1Tags": {
+            "namedEntityTags": "O",
+            "flattenedParse": "NP: PRP"
+          },
+          "arg2Tags": {
+            "namedEntityTags": "",
+            "flattenedParse": ""
+          },
+          "relationTags": {
+            "namedEntityTags": "O",
+            "flattenedParse": "VP: VBD"
+          }
+        },
+        {
+          "id": "767f527d2f394ee586547673bf879b3e",
+          "type": "NOUN_BASED",
+          "confidence": {
+            "present": false
+          },
+          "sentenceIdx": 0,
+          "contextLayer": 0,
+          "relation": "was",
+          "arg1": "a lawyer",
+          "arg2": "he",
+          "linkedContexts": [],
+          "simpleContexts": [],
+          "arg1Tags": {
+            "namedEntityTags": "O O",
+            "flattenedParse": "NP: DT NN"
+          },
+          "arg2Tags": {
+            "namedEntityTags": "O",
+            "flattenedParse": "NP: PRP"
+          },
+          "relationTags": {
+            "namedEntityTags": "O",
+            "flattenedParse": "VP: VBD"
+          }
+        },
+        {
+          "id": "5ef2d1e1030d4e3ba44c341de6a24b4e",
+          "type": "VERB_BASED",
+          "confidence": {
+            "present": false
+          },
+          "sentenceIdx": 0,
+          "contextLayer": 1,
+          "relation": "worked",
+          "arg1": "he",
+          "arg2": "as an associate at the law firms of Sidley Austin",
+          "linkedContexts": [
+            {
+              "targetID": "dddfeeab9e85440586636f221c8ca18c",
+              "classification": "LIST"
+            }
+          ],
+          "simpleContexts": [
+            {
+              "text": "in 1989 .",
+              "classification": "TEMPORAL",
+              "timeInformation": {
+                "present": false
+              },
+              "tagHolder": {
+                "namedEntityTags": "O O O",
+                "flattenedParse": "FRAG: IN CD ."
+              }
+            }
+          ],
+          "arg1Tags": {
+            "namedEntityTags": "O",
+            "flattenedParse": "NP: PRP"
+          },
+          "arg2Tags": {
+            "namedEntityTags": "O O O O O O O O ORGANIZATION ORGANIZATION",
+            "flattenedParse": "MISC: IN DT NN IN DT NN NNS IN NNP NNP"
+          },
+          "relationTags": {
+            "namedEntityTags": "O",
+            "flattenedParse": "VP: VBD"
+          }
+        },
+        {
+          "id": "dddfeeab9e85440586636f221c8ca18c",
+          "type": "VERB_BASED",
+          "confidence": {
+            "present": false
+          },
+          "sentenceIdx": 0,
+          "contextLayer": 1,
+          "relation": "worked",
+          "arg1": "he",
+          "arg2": "as an associate at the law firms of Hopkins & Sutter",
+          "linkedContexts": [
+            {
+              "targetID": "5ef2d1e1030d4e3ba44c341de6a24b4e",
+              "classification": "LIST"
+            }
+          ],
+          "simpleContexts": [
+            {
+              "text": "in 1990 .",
+              "classification": "TEMPORAL",
+              "timeInformation": {
+                "present": false
+              },
+              "tagHolder": {
+                "namedEntityTags": "O O O",
+                "flattenedParse": "FRAG: IN CD ."
+              }
+            }
+          ],
+          "arg1Tags": {
+            "namedEntityTags": "O",
+            "flattenedParse": "NP: PRP"
+          },
+          "arg2Tags": {
+            "namedEntityTags": "O O O O O O O O ORGANIZATION ORGANIZATION ORGANIZATION",
+            "flattenedParse": "MISC: IN DT NN IN DT NN NNS IN NNP CC NNP"
+          },
+          "relationTags": {
+            "namedEntityTags": "O",
+            "flattenedParse": "VP: VBD"
+          }
+        }
+      ]
+    }
+  ],
+  "extractions": [
+    {
+      "id": "58e6bbb4f27549db94374736a64cc75b",
+      "type": "VERB_BASED",
+      "confidence": {
+        "present": false
+      },
+      "sentenceIdx": 0,
+      "contextLayer": 0,
+      "relation": "returned",
+      "arg1": "he",
+      "arg2": "",
+      "linkedContexts": [
+        {
+          "targetID": "5ef2d1e1030d4e3ba44c341de6a24b4e",
+          "classification": "ELABORATION"
+        },
+        {
+          "targetID": "dddfeeab9e85440586636f221c8ca18c",
+          "classification": "ELABORATION"
+        },
+        {
+          "targetID": "767f527d2f394ee586547673bf879b3e",
+          "classification": "NOUN_BASED"
+        }
+      ],
+      "simpleContexts": [
+        {
+          "text": "during his summers .",
+          "classification": "UNKNOWN",
+          "timeInformation": {
+            "present": false
+          },
+          "tagHolder": {
+            "namedEntityTags": "O O O O",
+            "flattenedParse": "FRAG: IN PRP$ NNS ."
+          }
+        },
+        {
+          "text": "a lawyer was he .",
+          "classification": "NOUN_BASED",
+          "timeInformation": {
+            "present": false
+          },
+          "tagHolder": {
+            "namedEntityTags": "O O O O O",
+            "flattenedParse": "S: DT NN VBD PRP ."
+          }
+        },
+        {
+          "text": "to Chicago .",
+          "classification": "SPATIAL",
+          "timeInformation": {
+            "present": false
+          },
+          "tagHolder": {
+            "namedEntityTags": "O LOCATION O",
+            "flattenedParse": "FRAG: TO NNP ."
+          }
+        }
+      ],
+      "arg1Tags": {
+        "namedEntityTags": "O",
+        "flattenedParse": "NP: PRP"
+      },
+      "arg2Tags": {
+        "namedEntityTags": "",
+        "flattenedParse": ""
+      },
+      "relationTags": {
+        "namedEntityTags": "O",
+        "flattenedParse": "VP: VBD"
+      }
+    },
+    {
+      "id": "767f527d2f394ee586547673bf879b3e",
+      "type": "NOUN_BASED",
+      "confidence": {
+        "present": false
+      },
+      "sentenceIdx": 0,
+      "contextLayer": 0,
+      "relation": "was",
+      "arg1": "a lawyer",
+      "arg2": "he",
+      "linkedContexts": [],
+      "simpleContexts": [],
+      "arg1Tags": {
+        "namedEntityTags": "O O",
+        "flattenedParse": "NP: DT NN"
+      },
+      "arg2Tags": {
+        "namedEntityTags": "O",
+        "flattenedParse": "NP: PRP"
+      },
+      "relationTags": {
+        "namedEntityTags": "O",
+        "flattenedParse": "VP: VBD"
+      }
+    },
+    {
+      "id": "5ef2d1e1030d4e3ba44c341de6a24b4e",
+      "type": "VERB_BASED",
+      "confidence": {
+        "present": false
+      },
+      "sentenceIdx": 0,
+      "contextLayer": 1,
+      "relation": "worked",
+      "arg1": "he",
+      "arg2": "as an associate at the law firms of Sidley Austin",
+      "linkedContexts": [
+        {
+          "targetID": "dddfeeab9e85440586636f221c8ca18c",
+          "classification": "LIST"
+        }
+      ],
+      "simpleContexts": [
+        {
+          "text": "in 1989 .",
+          "classification": "TEMPORAL",
+          "timeInformation": {
+            "present": false
+          },
+          "tagHolder": {
+            "namedEntityTags": "O O O",
+            "flattenedParse": "FRAG: IN CD ."
+          }
+        }
+      ],
+      "arg1Tags": {
+        "namedEntityTags": "O",
+        "flattenedParse": "NP: PRP"
+      },
+      "arg2Tags": {
+        "namedEntityTags": "O O O O O O O O ORGANIZATION ORGANIZATION",
+        "flattenedParse": "MISC: IN DT NN IN DT NN NNS IN NNP NNP"
+      },
+      "relationTags": {
+        "namedEntityTags": "O",
+        "flattenedParse": "VP: VBD"
+      }
+    },
+    {
+      "id": "dddfeeab9e85440586636f221c8ca18c",
+      "type": "VERB_BASED",
+      "confidence": {
+        "present": false
+      },
+      "sentenceIdx": 0,
+      "contextLayer": 1,
+      "relation": "worked",
+      "arg1": "he",
+      "arg2": "as an associate at the law firms of Hopkins & Sutter",
+      "linkedContexts": [
+        {
+          "targetID": "5ef2d1e1030d4e3ba44c341de6a24b4e",
+          "classification": "LIST"
+        }
+      ],
+      "simpleContexts": [
+        {
+          "text": "in 1990 .",
+          "classification": "TEMPORAL",
+          "timeInformation": {
+            "present": false
+          },
+          "tagHolder": {
+            "namedEntityTags": "O O O",
+            "flattenedParse": "FRAG: IN CD ."
+          }
+        }
+      ],
+      "arg1Tags": {
+        "namedEntityTags": "O",
+        "flattenedParse": "NP: PRP"
+      },
+      "arg2Tags": {
+        "namedEntityTags": "O O O O O O O O ORGANIZATION ORGANIZATION ORGANIZATION",
+        "flattenedParse": "MISC: IN DT NN IN DT NN NNS IN NNP CC NNP"
+      },
+      "relationTags": {
+        "namedEntityTags": "O",
+        "flattenedParse": "VP: VBD"
+      }
+    }
+  ]
+}

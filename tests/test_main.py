@@ -9,7 +9,7 @@ cfg = testutil.setup_config_and_logging()
 
 class MainTester:
     def test_successful_main(self):
-        main = Estrella(cfg=cfg['main'])
+        main = Estrella(cfg_or_path=cfg['main'])
         p = main.get_pipeline("test_pipeline")
         p.assemble()
         main.run_pipeline("test_pipeline", "tests/resources/test.txt")
@@ -17,7 +17,9 @@ class MainTester:
         doc = d.copy()[0]
         nt.assert_equal(len(d), 1)
         facts = d.hop("facts")
-        contexts = facts.copy().filter(
+        vectors = [f.numerify() for f in facts]
+
+        contexts = facts.filter(
             filter_predicate=lambda f: "intel" in f.subject.text.lower()
         ).hop(
             link_name="links", constraint=lambda link: link.label == ContextLabel.Background

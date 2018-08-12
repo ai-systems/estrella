@@ -1,4 +1,4 @@
-from typing import Collection, Dict, Iterable
+from typing import Collection, Dict, Iterable, Union, Mapping
 
 from pyhocon import ConfigTree
 
@@ -6,16 +6,23 @@ from estrella import util
 from estrella.model import language
 from estrella.model.basic import Document
 from estrella.operate import view
-from estrella.operate.latent import EmbeddingComparator
+from estrella.operate.embedding import EmbeddingComparator
 from estrella.operate.view import View
 from estrella.pipeline import Pipeline, from_config
 from estrella.interfaces import Loggable
 
 
 class Estrella(Loggable):
-    def __init__(self, cfg_path: str = None):
+    def __init__(self, cfg_or_path: Union[str, ConfigTree] = None):
         super().__init__()
-        self.cfg = util.read_config(cfg_path)['main']
+        if isinstance(cfg_or_path, Mapping):
+            self.cfg = cfg_or_path
+        else:
+            try:
+                self.cfg = util.read_config(cfg_or_path)['main']
+            except Exception:
+                raise ValueError("Could not construct main class. Param "
+                                 "cfg_or_path should be string or dict-like config! (Was {})".format(type(cfg_or_path)))
         self._docs = []
         self.dist_service: EmbeddingComparator = util.safe_construct(self.cfg['embedding_comparator'],
                                                                      restrict_to=EmbeddingComparator,

@@ -1,7 +1,7 @@
 import json
 from abc import ABCMeta, abstractmethod
 from operator import attrgetter
-from typing import Sequence, Collection, Dict
+from typing import Sequence, Dict, Iterable
 
 import requests
 
@@ -38,7 +38,7 @@ class Indra(EmbeddingComparator, EmbeddingProvider):
         self.scoring_function = scoring_function
         self.embeddings_endpoint = "http://{}:{}/vectors".format(server, port)
 
-    def get_embeddings(self, strings: Collection[str]) -> Dict[str, float]:
+    def get_embeddings(self, strings: Iterable[str]) -> Dict[str, float]:
         """
         Embeds the words in the configured vector space and returns the embeddings. Returns None for word where
         the embedding is not known.
@@ -47,6 +47,7 @@ class Indra(EmbeddingComparator, EmbeddingProvider):
         :return: Mapping between the given words and their embedding in the configured vector space. For every word that
         has no embedding in the vector space, returns None.
         """
+
         payload = {
             'corpus': self.corpus,
             'model': self.model,
@@ -128,7 +129,7 @@ class Indra(EmbeddingComparator, EmbeddingProvider):
         words_with_ids = [
             {
                 "_id": id,
-                "name": get(comparable)
+                "name": str(get(comparable))
             }
             for id, comparable in enumerate(comparables)]
         result = self.sort_by_relatedness_with_id(compare_with, words_with_ids)

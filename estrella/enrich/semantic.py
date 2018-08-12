@@ -5,7 +5,7 @@ from typing import Dict
 import requests
 
 from estrella.enrich import Enricher
-from estrella.model.oie import MaybeSpan, FactLabel, ContextLink, SingleFact
+from estrella.model.oie import MaybeSpan, FactLabel, ContextLink, Fact
 
 
 def _get(serialized, *paths, as_cls=lambda x: x):
@@ -69,12 +69,12 @@ class GrapheneEnricher(Enricher):
         for simple_id, serialized_fact in enumerate(serialized_facts):
             long_id = serialized_fact["id"]
             # create basic fact
-            fact = SingleFact(simple_id,  # id
-                              document[serialized_fact['sentenceIdx']],  # sentence
-                              serialized_fact['contextLayer'],  # context_level
-                              *_get(serialized_fact, "arg1", "relation", "arg2", as_cls=MaybeSpan),  # spo
-                              extraction_type=FactLabel.from_string(serialized_fact['type'])
-                              )
+            fact = Fact(simple_id,  # id
+                        document[serialized_fact['sentenceIdx']],  # sentence
+                        serialized_fact['contextLayer'],  # context_level
+                        *_get(serialized_fact, "arg1", "relation", "arg2", as_cls=MaybeSpan),  # spo
+                        extraction_type=FactLabel.from_string(serialized_fact['type'])
+                        )
 
             # save map from long id to fact
             id_to_fact[long_id] = fact
@@ -102,6 +102,7 @@ class GrapheneEnricher(Enricher):
             source.fact_links.append(ContextLink(source=source, label=label, target=id_to_fact[target]))
 
         document.facts = facts
+
 
     def group_by_lists(self, facts, links, id_map):
         # create FactCollection for every list

@@ -1,17 +1,16 @@
 from estrella import pipeline, util
 from nose import tools as nt
 
+from tests import testutil
 
-def setup_module():
-    util.setup_logging("config/logging_tests.json")
+cfg = testutil.setup_config_and_logging()
 
 
 class TestPipeline:
     @classmethod
     def setup_class(cls):
-        cls.cfg = util.read_config("config/testing.conf")
+        cls.cfg = util.read_config("tests/config/testing.conf")
         cls.tp = cls.cfg.test_pipeline
-        print(util.format_config(cls.cfg))
 
     def test_successful_setup_from_config(self):
         pipeline.from_config(self.tp).assemble()

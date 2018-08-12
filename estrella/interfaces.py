@@ -42,6 +42,12 @@ class Readable(metaclass=ABCMeta):
         pass
 
 
+class Numeric(metaclass=ABCMeta):
+    @abstractmethod
+    def numerify(self, *args, **kwargs):
+        pass
+
+
 class Viewable(metaclass=ABCMeta):
     """
     Viewable interface. For now not used too much.
@@ -117,6 +123,9 @@ class Labeled(Enum):
 
     def get_weighted_embedding(self, top_k=None):
         pass
+
+    def __int__(self):
+        return list(self.__class__.__members__).index(self.name)
 
     @classmethod
     def from_string(cls, string: str):

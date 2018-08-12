@@ -62,7 +62,8 @@ def read_config(path="", default="default.conf"):
         if path:
             logging.getLogger(__name__).warning("{} doesn't exist! Loading default.".format(path))
         return ConfigFactory.parse_string(default)
-    cfg_str = 'include "{}"\n{}'.format(default, cfg_str)
+    cfg_str = '{}\n{}'.format(default, cfg_str)
+
     return ConfigFactory.parse_string(cfg_str)
 
 
@@ -74,10 +75,8 @@ def load_class(class_string: str, restrict_to: Union[type, List[type]] = None, r
         module_name = ""
     try:
         x = ".".join((relative_import, module_name)).rstrip(".")
-        print(x, cls_name)
         mod = __import__(x, fromlist=cls_name)
     except ModuleNotFoundError:
-        print(module_name, cls_name)
         mod = __import__(module_name, fromlist=cls_name)
     cls = getattr(mod, cls_name)
 
@@ -164,7 +163,7 @@ def format_config(config):
 
 
 def pprint(*args, delimiter=" ", to_stdout=False, **kwargs):
-    result = delimiter.join(arg.pprint(**kwargs) if isinstance(arg, Readable) else repr(arg) for arg in args)
+    result = delimiter.join(arg.pprint(**kwargs) if getattr(arg, "pprint", False) else str(arg) for arg in args)
     if to_stdout:
         print(result)
     return result

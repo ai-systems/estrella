@@ -29,8 +29,10 @@ facts = main.docs.hop(link_name="facts")
 print(simple_print(facts))
 from estrella.model.oie import ContextLabel
 # Why did the chicken cross the road?
-result = facts.filter(subject="The chicken", predicate="cross", object="the road").hop(link_name="links",constraint=lambda link: link.label == ContextLabel.Cause)
-print(result.serialize(serialize_with=simple_print))
+answer = facts.filter(subject="The chicken", predicate="cross", object="the road").hop(link_name="links",constraint=lambda link: link.label == ContextLabel.Cause)
+print(answer.serialize(serialize_with=simple_print))
+vectors = [f.numerify() for f in facts]
+
 ```
 For documentation, refer to the source code.
 

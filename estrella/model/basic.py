@@ -1,10 +1,8 @@
-# This will be refactored to the corresponding files
-from abc import abstractmethod
 from collections import Sequence
 from typing import List, Collection, Dict, Type, Union, Callable
 from uuid import uuid4
 
-from estrella.interfaces import Representable, Readable, Viewable, Labeled
+from estrella.interfaces import Representable, Readable, Viewable, Labeled, Numeric
 
 
 class Document(Sequence, Representable, Readable, Viewable):
@@ -25,7 +23,7 @@ class Document(Sequence, Representable, Readable, Viewable):
         }
 
     def pprint(self, **kwargs):
-        return "\n".join(s.pprint() for s in self.sentences)
+        return "\n".join(s.pprint(**kwargs) for s in self.sentences)
 
     def __getitem__(self, i: int):
         return self.sentences[i]
@@ -62,7 +60,7 @@ class Document(Sequence, Representable, Readable, Viewable):
 
 class Sentence(Sequence, Representable, Readable):
     def pprint(self, **kwargs):
-        return " ".join(w.pprint() for w in self.words)
+        return " ".join(w.pprint(**kwargs) for w in self.words)
 
     def __getitem__(self, i: int):
         return self.words[i]
@@ -76,28 +74,22 @@ class Sentence(Sequence, Representable, Readable):
 
 
 class Word(Representable, Readable):
-
     def pprint(self, **kwargs):
         return self.text
 
     def __init__(self, index: int, text, normalized_text: str):
-        # self.numerizer: Numerizer = None  # from config. kinda creates the feature-vector. this should probably move
-        # self.normalizer: Normalizer = None  # from config or default. so should probably this
         self.index: int = index  # position in sentence
         self.text: str = text
         self.normalized_text: str = normalized_text
         self.pos_tag: Labeled = None  # set later by an enricher
-        self.embedding = None  # word/char based, deep vs shallow, fully pretrained vs fully learnable
+        self.embedding = None
         self.to_represent = {"text", "normalized_text"}
 
 
-class Concept(Representable, Readable):
-    @abstractmethod
-    def pprint(self, **kwargs) -> str:
-        pass
+class Span(Sequence, Representable, Readable, Numeric):
+    def numerify(self, *args, **kwargs):
+        return self.embedding
 
-
-class Span(Sequence, Concept):
     def __len__(self) -> int:
         return len(self.words)
 
@@ -116,35 +108,6 @@ class Span(Sequence, Concept):
         pass
 
 
-# class LinkedSpan(Span):
-#     def __init__(self):
-#         super().__init__()
-#         self.link: Span = None
-#         self.link_label: Label = None
-
-# This will be moved to the corresponding files
-# class POSTags(Label):
-#     NN = "NN"
-#     # etc
-#
-#
-# class DependencyTags(Label):
-#     Root = "root"
-#     # etc
-#
-#
-# class Constituents(Label):
-#     NounPhrase = "NP"
-#     # etc
-#
-#
-# class DocumentGenres(Label):
-#     Factoid = "factoid"
-#     # etc
-#
-#
-# class NERTags(Label):
-#     Person = "P"
 class Link:
     def __init__(self, label, target):
         self.label: Labeled = label
